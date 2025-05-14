@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About L'AIRE APARTMENTS | Premium Short-Lets in Abuja</title>
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/pp-neue-montreal">
+  <style>
+    :root {
+      --primary: #1a1917;
+      --secondary: #f8f5f2;
+      --accent: #c7a17a;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "PP Neue Montreal", sans-serif;
+      color: var(--primary);
+      background-color: var(--secondary);
+      overflow-x: hidden;
+    }
+    
+    /* Noise effect */
+    .noise-overlay {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: transparent url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+      background-size: 300px 300px;
+      animation: noise-animation 0.3s steps(5) infinite;
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 100;
+    }
+    
+    @keyframes noise-animation {
+      0% { transform: translate(0,0); }
+      10% { transform: translate(-2%,-3%); }
+      20% { transform: translate(-4%,2%); }
+      30% { transform: translate(2%,-4%); }
+      40% { transform: translate(-2%,5%); }
+      50% { transform: translate(-4%,2%); }
+      60% { transform: translate(3%,0); }
+      70% { transform: translate(0,3%); }
+      80% { transform: translate(-3%,0); }
+      90% { transform: translate(2%,2%); }
+      100% { transform: translate(1%,0); }
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      mix-blend-mode: difference;
+      color: var(--secondary);
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+    }
+    
+    nav a:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover:after {
+      width: 100%;
+    }
+    
+    /* Page Hero */
+    .page-hero {
+      height: 60vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--secondary);
+    }
+    
+    .page-hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    
+    .page-hero h1 {
+      font-size: 4rem;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    
+    .page-hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* About Sections */
+    .about-section {
+      padding: 8rem 5%;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin-bottom: 3rem;
+      letter-spacing: -0.03em;
+    }
+    
+    .section-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+    
+    .about-card {
+      padding: 2rem;
+    }
+    
+    .about-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+    
+    .about-card p {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Team Section */
+    .team-section {
+      background: var(--primary);
+      color: var(--secondary);
+      padding: 8rem 5%;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+    
+    .team-member {
+      text-align: center;
+    }
+    
+    .team-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 2px solid var(--accent);
+    }
+    
+    .team-name {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .team-position {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    
+    /* Values Section */
+    .values-section {
+      padding: 8rem 5%;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+    
+    .value-card {
+      padding: 2rem;
+      border: 1px solid rgba(26, 25, 23, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .value-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .value-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .value-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      padding: 6rem 5%;
+      text-align: center;
+      background: var(--primary);
+      color: var(--secondary);
+    }
+    
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border: 1px solid var(--secondary);
+      color: var(--secondary);
+      background: transparent;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .btn-primary {
+      background: var(--secondary);
+      color: var(--primary);
+    }
+    
+    .btn:hover {
+      background: rgba(248, 245, 242, 0.2);
+    }
+    
+    .btn-primary:hover {
+      background: rgba(248, 245, 242, 0.9);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-hero {
+        height: 50vh;
+      }
+      
+      .page-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise-overlay"></div>
+  
+  <header>
+    <div class="logo">L'AIRE</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="apartments.html">Apartments</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="list.html">List Your Property</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section class="page-hero">
+    <img src="https://cdn.cosmos.so/5eee2d2d-3d4d-4ae5-96d4-cdbae70a2387?format=jpeg" alt="L'AIRE APARTMENTS" class="page-hero-image">
+    <div class="hero-content">
+      <h1>Our Story</h1>
+      <p>Discover the vision behind L'AIRE APARTMENTS and our commitment to redefining short-term stays in Abuja</p>
+    </div>
+  </section>
+  
+  <section class="about-section">
+    <h2 class="section-title">Redefining Short-Term Living</h2>
+    <p class="section-subtitle">Founded in 2020, L'AIRE APARTMENTS emerged from a simple idea: that temporary stays shouldn't mean compromising on comfort, style, or convenience.</p>
+    
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Our Beginning</h3>
+        <p>What started as a single property in Wuse has grown into Abuja's premier short-let marketplace. We recognized the growing need for quality temporary accommodations that feel like home.</p>
+      </div>
+      
+      <div class="about-card">
+        <h3>The L'AIRE Difference</h3>
+        <p>We curate each property in our collection, ensuring they meet our exacting standards for comfort, location, and amenities. Every apartment tells a story of thoughtful design.</p>
+      </div>
+      
+      <div class="about-card">
+        <h3>Our Promise</h3>
+        <p>To provide guests with seamless stays and property owners with hassle-free management. Your satisfaction is the measure of our success.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="team-section">
+    <h2 class="section-title">Meet Our Team</h2>
+    <p class="section-subtitle">A passionate group dedicated to transforming your stay experience in Abuja</p>
+    
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Amina Yusuf" class="team-image">
+        <h3 class="team-name">Amina Yusuf</h3>
+        <p class="team-position">Founder & CEO</p>
+        <p>With 10+ years in hospitality, Amina brings visionary leadership to L'AIRE.</p>
+      </div>
+      
+      <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Emeka Okoro" class="team-image">
+        <h3 class="team-name">Emeka Okoro</h3>
+        <p class="team-position">Operations Director</p>
+        <p>Ensures every property meets our exacting standards.</p>
+      </div>
+      
+      <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Chioma Adeleke" class="team-image">
+        <h3 class="team-name">Chioma Adeleke</h3>
+        <p class="team-position">Guest Experience</p>
+        <p>Dedicated to making every stay memorable.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="values-section">
+    <h2 class="section-title">Our Core Values</h2>
+    <p class="section-subtitle">The principles that guide everything we do</p>
+    
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">✨</div>
+        <h3 class="value-title">Quality</h3>
+        <p>We never compromise on the standards of our properties or services.</p>
+      </div>
+      
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h3 class="value-title">Integrity</h3>
+        <p>Honest dealings with guests and property owners alike.</p>
+      </div>
+      
+      <div class="value-card">
+        <div class="value-icon">🏙️</div>
+        <h3 class="value-title">Community</h3>
+        <p>We believe in enriching the neighborhoods we operate in.</p>
+      </div>
+      
+      <div class="value-card">
+        <div class="value-icon">🌱</div>
+        <h3 class="value-title">Innovation</h3>
+        <p>Continually evolving to meet changing needs.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta-section">
+    <h2>Ready to Experience L'AIRE?</h2>
+    <a href="apartments.html" class="btn btn-primary">Browse Our Apartments</a>
+  </section>
+  
+  <script>
+    // Simple animation for page hero image
+    document.addEventListener('DOMContentLoaded', function() {
+      const heroImage = document.querySelector('.page-hero-image');
+      heroImage.style.transform = 'scale(1.1)';
+      heroImage.style.transition = 'transform 10s ease';
+      
+      setTimeout(() => {
+        heroImage.style.transform = 'scale(1)';
+      }, 100);
+    });
+  </script>
+</body>
+</html>
