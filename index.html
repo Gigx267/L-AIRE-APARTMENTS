@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'AIRE APARTMENTS | Premium Short-Lets in Abuja</title>
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/pp-neue-montreal">
+  <style>
+    :root {
+      --primary: #1a1917;
+      --secondary: #f8f5f2;
+      --accent: #c7a17a;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "PP Neue Montreal", sans-serif;
+      color: var(--primary);
+      background-color: var(--secondary);
+      overflow-x: hidden;
+    }
+    
+    /* Noise effect */
+    .noise-overlay {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: transparent url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+      background-size: 300px 300px;
+      animation: noise-animation 0.3s steps(5) infinite;
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 100;
+    }
+    
+    @keyframes noise-animation {
+      0% { transform: translate(0,0); }
+      10% { transform: translate(-2%,-3%); }
+      20% { transform: translate(-4%,2%); }
+      30% { transform: translate(2%,-4%); }
+      40% { transform: translate(-2%,5%); }
+      50% { transform: translate(-4%,2%); }
+      60% { transform: translate(3%,0); }
+      70% { transform: translate(0,3%); }
+      80% { transform: translate(-3%,0); }
+      90% { transform: translate(2%,2%); }
+      100% { transform: translate(1%,0); }
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      mix-blend-mode: difference;
+      color: var(--secondary);
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+    }
+    
+    nav a:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover:after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    
+    .hero-content {
+      position: absolute;
+      bottom: 10%;
+      left: 5%;
+      max-width: 50%;
+      color: var(--secondary);
+    }
+    
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 80%;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border: 1px solid var(--secondary);
+      color: var(--secondary);
+      background: transparent;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .btn-primary {
+      background: var(--secondary);
+      color: var(--primary);
+    }
+    
+    .btn:hover {
+      background: rgba(248, 245, 242, 0.2);
+    }
+    
+    .btn-primary:hover {
+      background: rgba(248, 245, 242, 0.9);
+    }
+    
+    /* About Section */
+    .section {
+      padding: 8rem 5%;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin-bottom: 3rem;
+      letter-spacing: -0.03em;
+    }
+    
+    .about-content {
+      display: flex;
+      gap: 5%;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-text p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 80%;
+    }
+    
+    /* Benefits Section */
+    .benefits {
+      background: var(--primary);
+      color: var(--secondary);
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+    
+    .benefit-card {
+      padding: 2rem;
+      border: 1px solid rgba(248, 245, 242, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .benefit-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .benefit-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      background: var(--secondary);
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+    
+    .testimonial-card {
+      padding: 2rem;
+      border: 1px solid rgba(26, 25, 23, 0.1);
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .testimonial-author {
+      font-weight: 500;
+    }
+    
+    /* Footer CTA */
+    .footer-cta {
+      text-align: center;
+      padding: 6rem 5%;
+      background: var(--primary);
+      color: var(--secondary);
+    }
+    
+    .footer-cta h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content {
+        max-width: 90%;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-text p {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise-overlay"></div>
+  
+  <header>
+    <div style="color: hsl(60, 40%, 8%);" class="logo">L'AIRE APARTMENTS</div>
+   
+</header>
+
+<section class="hero bohemian">
+  <!-- Multiple background images in the hero section -->
+  <div class="hero-slideshow">
+      <img src="p (6).jpg" alt="Luxury apartment in Abuja" class="hero-image active">
+      <img src="p (3).jpg" alt="Luxury apartment in Abuja" class="hero-image">
+      <img src="p (4).jpg" alt="Luxury apartment in Abuja" class="hero-image">
+      <img src="p (3).jpg" alt="Luxury apartment in Abuja" class="hero-image">
+  </div>
+  
+  <div class="hero-content">
+      <div class="logo-container">
+          <h1 class="logo animate-title"> <BR><BR>Your Abuja Home Away From Home </h1>
+          <p class="animate-subtitle">Discover premium and budget-friendly short-let apartments for both long and short stays </p>
+      </div>
+      
+      <div class="cta-buttons">
+          <a href="Apartments.html" class="btn btn-primary animate-btn-1">Browse Apartments</a>
+          <a href="#contact" class="btn btn-secondary animate-btn-2">Contact Us</a>
+      </div>
+      
+      <!-- Animated scroll indicator -->
+      <div class="scroll-indicator">
+        
+      </div>
+  </div>
+  
+  <!-- Bohemian decorative elements -->
+  <div class="bohemian-overlay"></div>
+  <div class="bohemian-elements">
+      <div class="macrame macrame-1"></div>
+      <div class="macrame macrame-2"></div>
+      <div class="dreamcatcher"></div>
+      <div class="plant plant-1"></div>
+      <div class="plant plant-2"></div>
+  </div>
+</section>
+
+<style>
+  /* Base Hero Styles */
+  .hero.bohemian {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* Slideshow Styles with Bohemian filter */
+  .hero-slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
+  
+  .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.1);
+      transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      z-index: 1;
+      filter: brightness(0.7) sepia(0.2) contrast(1.1) saturate(1.1);
+  }
+  
+  .hero-image.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 2;
+  }
+  
+  /* Content Container */
+  .hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 2rem;
+      text-align: center;
+  }
+  
+  .logo-container {
+      margin-bottom: 3rem;
+      overflow: hidden;
+  }
+  
+  /* Text Animations with Bohemian typography */
+  .animate-title {
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: #f8f3e6;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out 0.3s forwards;
+      font-weight: 500;
+      letter-spacing: 1px;
+  }
+  
+  .animate-subtitle {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: #e8d9c5;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out 0.6s forwards;
+      font-weight: 300;
+      line-height: 1.6;
+  }
+  
+  /* Button Styles with Bohemian colors */
+  .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+  }
+  
+  .btn {
+      padding: 1rem 2.5rem;
+      border: none;
+      color: white;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(20px);
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-primary {
+      background: #a3866a;
+      animation: fadeInUp 0.8s ease-out 0.9s forwards;
+  }
+  
+  .btn-secondary {
+      background: transparent;
+      border: 2px solid #a3866a;
+      color: #f8f3e6;
+      animation: fadeInUp 0.8s ease-out 1.1s forwards;
+  }
+  
+  .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-primary:hover {
+      background: #8a6d52;
+  }
+  
+  .btn-secondary:hover {
+      background: rgba(163, 134, 106, 0.2);
+  }
+  
+  /* Scroll Indicator */
+  .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      animation: fadeIn 1s ease-out 1.5s forwards;
+  }
+  
+  .mouse {
+      width: 30px;
+      height: 50px;
+      border: 2px solid #f8f3e6;
+      border-radius: 15px;
+      position: relative;
+      margin: 0 auto;
+  }
+  
+  .wheel {
+      width: 4px;
+      height: 8px;
+      background: #f8f3e6;
+      border-radius: 2px;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: scrollWheel 2s infinite;
+  }
+  
+  .arrow {
+      width: 15px;
+      height: 15px;
+      border-right: 2px solid #f8f3e6;
+      border-bottom: 2px solid #f8f3e6;
+      transform: rotate(45deg);
+      margin: 10px auto;
+      animation: scrollArrow 2s infinite;
+  }
+  
+  /* Bohemian Overlay and Decorative Elements */
+  .bohemian-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(72, 52, 42, 0.3) 0%, rgba(163, 134, 106, 0.1) 100%);
+      z-index: 3;
+  }
+  
+  .bohemian-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 4;
+      pointer-events: none;
+  }
+  
+  /* Macrame decorative elements */
+  .macrame {
+      position: absolute;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q50,10 80,20 T100,50" fill="none" stroke="%23f8f3e6" stroke-width="1.5" stroke-opacity="0.3"/><path d="M20,30 Q50,20 80,30 T100,60" fill="none" stroke="%23f8f3e6" stroke-width="1.5" stroke-opacity="0.3"/><path d="M20,40 Q50,30 80,40 T100,70" fill="none" stroke="%23f8f3e6" stroke-width="1.5" stroke-opacity="0.3"/></svg>');
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.6;
+  }
+  
+  .macrame-1 {
+      width: 150px;
+      height: 200px;
+      top: 10%;
+      left: 5%;
+      animation: sway 8s ease-in-out infinite;
+  }
+  
+  .macrame-2 {
+      width: 120px;
+      height: 180px;
+      bottom: 10%;
+      right: 5%;
+      animation: sway 10s ease-in-out infinite reverse;
+  }
+  
+  /* Dreamcatcher element */
+  .dreamcatcher {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      top: 30%;
+      right: 10%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23f8f3e6" stroke-width="1" stroke-opacity="0.5"/><circle cx="50" cy="50" r="30" fill="none" stroke="%23f8f3e6" stroke-width="1" stroke-opacity="0.5"/><circle cx="50" cy="50" r="20" fill="none" stroke="%23f8f3e6" stroke-width="1" stroke-opacity="0.5"/><path d="M50,10 L50,90 M10,50 L90,50 M25,25 L75,75 M25,75 L75,25" stroke="%23f8f3e6" stroke-width="1" stroke-opacity="0.5"/></svg>');
+      background-repeat: no-repeat;
+      animation: rotate 20s linear infinite;
+  }
+  
+  /* Plant elements */
+  .plant {
+      position: absolute;
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.7;
+  }
+  
+  .plant-1 {
+      width: 100px;
+      height: 120px;
+      bottom: 0;
+      left: 15%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120"><path d="M50,120 L50,40 Q30,20 50,0 Q70,20 50,40" fill="none" stroke="%23a3866a" stroke-width="2"/><path d="M50,80 Q30,60 40,40" fill="none" stroke="%23a3866a" stroke-width="2"/><path d="M50,60 Q70,40 60,20" fill="none" stroke="%23a3866a" stroke-width="2"/></svg>');
+      animation: sway 6s ease-in-out infinite;
+  }
+  
+  .plant-2 {
+      width: 80px;
+      height: 100px;
+      bottom: 0;
+      right: 20%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 100"><path d="M40,100 L40,30 Q20,10 40,0 Q60,10 40,30" fill="none" stroke="%23a3866a" stroke-width="2"/><path d="M40,60 Q20,40 30,20" fill="none" stroke="%23a3866a" stroke-width="2"/><path d="M40,40 Q60,20 50,10" fill="none" stroke="%23a3866a" stroke-width="2"/></svg>');
+      animation: sway 7s ease-in-out infinite reverse;
+  }
+  
+  /* Keyframes */
+  @keyframes fadeInUp {
+      from {
+          opacity: 0;
+          transform: translateY(30px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  
+  @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+  }
+  
+  @keyframes scrollWheel {
+      0%, 100% {
+          transform: translateX(-50%) translateY(0);
+          opacity: 1;
+      }
+      50% {
+          transform: translateX(-50%) translateY(10px);
+          opacity: 0.5;
+      }
+  }
+  
+  @keyframes scrollArrow {
+      0%, 100% {
+          transform: rotate(45deg) translateY(0);
+          opacity: 1;
+      }
+      50% {
+          transform: rotate(45deg) translateY(5px);
+          opacity: 0.5;
+      }
+  }
+  
+  @keyframes sway {
+      0%, 100% {
+          transform: rotate(-5deg);
+      }
+      50% {
+          transform: rotate(5deg);
+      }
+  }
+  
+  @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+      .cta-buttons {
+          flex-direction: column;
+          gap: 1rem;
+      }
+      
+      .btn {
+          width: 100%;
+          max-width: 250px;
+          margin: 0 auto;
+      }
+      
+      .macrame, .dreamcatcher {
+          display: none;
+      }
+      
+      .plant-1, .plant-2 {
+          width: 60px;
+          height: 80px;
+      }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.hero-image');
+      let currentIndex = 0;
+      
+      function changeBackground() {
+          images[currentIndex].classList.remove('active');
+          currentIndex = (currentIndex + 1) % images.length;
+          images[currentIndex].classList.add('active');
+      }
+      
+      // Change image every 5 seconds with smooth transition
+      setInterval(changeBackground, 5000);
+      
+      // Initialize the first image
+      images[0].classList.add('active');
+      
+      // Add parallax effect on mouse move
+      const hero = document.querySelector('.hero');
+      if (hero) {
+          hero.addEventListener('mousemove', (e) => {
+              const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+              const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+              document.querySelector('.hero-content').style.transform = `translate(${xAxis}px, ${yAxis}px)`;
+              
+              // Move decorative elements for depth effect
+              const macrame1 = document.querySelector('.macrame-1');
+              const macrame2 = document.querySelector('.macrame-2');
+              const dreamcatcher = document.querySelector('.dreamcatcher');
+              
+              if (macrame1) macrame1.style.transform = `rotate(${xAxis * 0.5}deg)`;
+              if (macrame2) macrame2.style.transform = `rotate(${xAxis * 0.3}deg)`;
+              if (dreamcatcher) dreamcatcher.style.transform = `rotate(${xAxis * 0.2}deg)`;
+          });
+      }
+  });
+</script>
+  
+<section id="about" class="section bohemian-about">
+  <h2 class="section-title bohemian-title">Welcome to L'AIRE APARTMENTS</h2>
+  <div class="about-content">
+    <div class="about-text">
+      <p>Your premier short-let marketplace in Abuja. We offer a curated selection of service apartments designed to provide a seamless and enjoyable stay, whether you're here for business, leisure, or a temporary assignment.</p>
+      <p>We connect you with quality accommodations that offer the comfort and flexibility you need.</p>
+    </div>
+    <div class="about-logo">
+      <img src="logo2.jpg" alt="L'AIRE APARTMENTS Logo" class="logo-animate">
+    </div>
+  </div>
+</section>
+
+<section id="benefits" class="section benefits bohemian-benefits">
+  <h2 class="section-title bohemian-title">Why Choose L'AIRE APARTMENTS?</h2>
+  <div class="benefits-grid">
+    <div class="benefit-card bohemian-card">
+      <div class="benefit-icon">🏠</div>
+      <h3 class="benefit-title">Comfort & Convenience</h3>
+      <p>Enjoy fully furnished apartments with all the amenities of home.</p>
+    </div>
+    <div class="benefit-card bohemian-card">
+      <div class="benefit-icon">📍</div>
+      <h3 class="benefit-title">Prime Locations</h3>
+      <p>Access well-situated properties across Abuja, offering easy access to key areas.</p>
+    </div>
+    <div class="benefit-card bohemian-card">
+      <div class="benefit-icon">📅</div>
+      <h3 class="benefit-title">Flexible Stays</h3>
+      <p>Choose from daily, weekly, or monthly rental options to suit your needs.</p>
+    </div>
+    <div class="benefit-card bohemian-card">
+      <div class="benefit-icon">🛡️</div>
+      <h3 class="benefit-title">Trusted & Verified</h3>
+      <p>We carefully vet our listed properties to ensure quality and reliability.</p>
+    </div>
+    <div class="benefit-card bohemian-card">
+      <div class="benefit-icon">📱</div>
+      <h3 class="benefit-title">Easy Booking</h3>
+      <p>Our simple and secure booking process makes finding your ideal stay effortless.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section testimonials bohemian-testimonials">
+  <h2 class="section-title bohemian-title">What Our Clients Say</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card bohemian-card">
+      <p class="testimonial-text">"L'AIRE APARTMENTS made my business trip so much more comfortable. The apartment was fantastic, and the location was perfect."</p>
+      <p class="testimonial-author">— James O., Business Traveler</p>
+    </div>
+    <div class="testimonial-card bohemian-card">
+      <p class="testimonial-text">"Listing my property with L'AIRE has been a smooth and profitable experience. Highly recommended!"</p>
+      <p class="testimonial-author">— Amina K., Property Owner</p>
+    </div>
+  </div>
+</section>
+
+<section class="footer-cta bohemian-footer-cta">
+  <h2>Looking for the perfect short-let in Abuja?</h2>
+  <a href="Apartments.html" class="btn btn-primary bohemian-btn">Browse Our Apartments Now</a>
+</section>
+<style> /* Base Animation Styles */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Section Animations */
+  .bohemian-about {
+    animation: fadeInUp 1s ease-out both;
+  }
+  
+  .about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .about-text {
+    flex: 1;
+    animation: fadeInUp 1s ease-out 0.2s both;
+  }
+  
+  .about-logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .logo-animate {
+    max-width: 200px;
+    animation: float 4s ease-in-out infinite, pulse 3s ease-in-out infinite alternate;
+  }
+  
+  /* Benefits Grid Animations */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .benefit-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  /* Stagger the card animations */
+  .benefit-card:nth-child(1) { animation-delay: 0.2s; }
+  .benefit-card:nth-child(2) { animation-delay: 0.4s; }
+  .benefit-card:nth-child(3) { animation-delay: 0.6s; }
+  .benefit-card:nth-child(4) { animation-delay: 0.8s; }
+  .benefit-card:nth-child(5) { animation-delay: 1s; }
+  
+  .benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  
+  .benefit-card:hover .benefit-icon {
+    transform: scale(1.2) rotate(5deg);
+  }
+  
+  /* Testimonial Animations */
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .testimonial-card {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .testimonial-card:nth-child(1) { animation-delay: 0.3s; }
+  .testimonial-card:nth-child(2) { animation-delay: 0.6s; }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  
+  /* Footer CTA Animation */
+  .footer-cta {
+    text-align: center;
+    animation: pulse 2s ease-in-out infinite alternate;
+  }
+  
+  .bohemian-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #8e44ad, #3498db);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .bohemian-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  .bohemian-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #3498db, #8e44ad);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+  
+  .bohemian-btn:hover::after {
+    opacity: 1;
+  }
+  
+  /* Section Title Animation */
+  .bohemian-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+  
+  .bohemian-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #8e44ad, #3498db);
+    animation: expand 1.5s ease-out forwards;
+  }
+  
+  @keyframes expand {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100px;
+    }
+  }
+  
+  /* Card Hover Effects */
+  .bohemian-card {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .bohemian-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .about-content {
+      flex-direction: column;
+    }
+    
+    .logo-animate {
+      max-width: 150px;
+      margin-top: 2rem;
+    }
+    
+    .benefit-card, .testimonial-card {
+      animation: fadeInUp 0.8s ease-out forwards !important;
+      animation-delay: 0.2s !important;
+    }
+  }</style> 
+<style>
+  /* General Bohemian Style */
+  .bohemian-about,
+  .bohemian-benefits,
+  .bohemian-testimonials,
+  .bohemian-footer-cta {
+    background: linear-gradient(to bottom, #f9f2ec, #eae0d5);
+    color: #563d2d;
+    font-family: 'Playfair Display', serif;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+
+  .bohemian-title {
+    font-size: 2rem;
+    text-align: center;
+    color: #a45e37;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .about-text {
+    flex: 1;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .about-logo img {
+    max-width: 300px;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+    border: 5px solid #d6bfa5;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+
+  .about-logo img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.3));
+  }
+
+  /* Benefits Section */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .bohemian-card {
+    background: #ffffff;
+    border: 2px solid #d6bfa5;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .bohemian-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .benefit-title {
+    color: #a45e37;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+
+  /* Testimonials */
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-author {
+    font-weight: bold;
+    color: #a45e37;
+  }
+
+  /* Footer CTA */
+  .bohemian-footer-cta {
+    text-align: center;
+    padding: 2rem;
+    background: #a45e37;
+    color: #ffffff;
+    border-radius: 15px;
+    margin-top: 2rem;
+  }
+
+  .bohemian-btn {
+    background: #ffffff;
+    color: #a45e37;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .bohemian-btn:hover {
+    background: #eae0d5;
+    color: #563d2d;
+  }
+</style>
+  
+  <script>
+    // Simple animation for hero image
+    document.addEventListener('DOMContentLoaded', function() {
+      const heroImage = document.querySelector('.hero-image');
+      heroImage.style.transform = 'scale(1.1)';
+      heroImage.style.transition = 'transform 10s ease';
+      
+      setTimeout(() => {
+        heroImage.style.transform = 'scale(1)';
+      }, 100);
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
